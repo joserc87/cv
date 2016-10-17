@@ -1,20 +1,23 @@
 
 TEX=pdflatex
 CONVERT=convert # Needs imagemagick
+PDF_FILE=bin/JoseRamonCanoCV
 
-ALL: cv.en.pdf cv.es.pdf cv.pdf cv-0.png
+ALL: $(PDF_FILE)-en.pdf $(PDF_FILE)-es.pdf $(PDF_FILE)-en.png
 
-cv.en.pdf: cv.tex cv.en.tex
+bin:
+	mkdir -f bin
+
+$(PDF_FILE)-en.pdf: bin cv.tex cv.en.tex
 	$(TEX) cv.en.tex
+	mv cv.en.pdf $(PDF_FILE)-en.pdf
 
-cv.es.pdf: cv.tex cv.es.tex
+$(PDF_FILE)-es.pdf: bin cv.tex cv.es.tex
 	$(TEX) cv.es.tex
+	mv cv.es.pdf $(PDF_FILE)-es.pdf
 
-cv.pdf: cv.tex
-	$(TEX) cv.tex
-
-cv-0.png: cv.pdf
-	$(CONVERT) -density 200 cv.pdf -quality 85 cv.png
+$(PDF_FILE)-en.png: bin $(PDF_FILE)-en.pdf
+	$(CONVERT) -density 96 $(PDF_FILE)-en.pdf +append $(PDF_FILE)-en.png
 
 clean:
 	rm *.out *.aux *.log
