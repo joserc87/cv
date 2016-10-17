@@ -18,7 +18,7 @@
 \newif\ifes{}
 \newcommand{\en}[1]{\ifen#1\fi}
 \newcommand{\es}[1]{\ifes#1\fi}
-\newcommand{\translate}[2]{\ifen#1\fi\ifes#2\fi}
+\newcommand{\ml}[2]{\ifen#1\fi\ifes#2\fi}
 
 % If the output language is not defined, set it to english by default
 \ifcsname outputlanguage\endcsname
@@ -26,15 +26,16 @@
     \def\outputlanguage{en}
 \fi
 % Run \estrue or \entrue depending on the output langauge
-\ifthenelse{\equal{\outputlanguage}{es}}{
-    \estrue{}
-}{
-    \ifthenelse{\equal{\outputlanguage}{en}}{
-        \entrue{}
-    }{
-        % If language not supported, use english
-        \entrue{}
-    }
+\ifthenelse{\equal{\outputlanguage}{es}}
+% IF outputlanguage is ES, output spanish
+{\estrue{}}
+% If outputlanguage is not ES, try EN
+{\ifthenelse{\equal{\outputlanguage}{en}}
+    % If outputlanguage is EN, output english
+    {\entrue{}}
+    % Here we could add more languages...
+    % If language not supported, use english
+    {\entrue{}}
 }
 
 % --------
@@ -73,17 +74,16 @@
 
 \firstname{José Ramón}
 \familyname{Cano Yribarren}
-\title{
-    \translate{Software Engineer}{Ingeniero Informático}
+
+\title{\ml{Software Engineer}{Ingeniero Informático}}
+
+\address{Noordwal 68}{\ml
+    % EN
+    {The Hague, 2513EC (The Nederlands)}
+    % ES
+    {La Haya, 2513EC (Países Bajos)}
 }
 
-\address{Noordwal 68}{
-    \translate{
-        The Hague, 2513EC (The Nederlands)
-    }{
-        La Haya, 2513EC (Países Bajos)
-    }
-}
 \mobile{+31~(0)6~51~03~04~66}
 % \phone{+34~958~508~130}
 % \fax{+3~(456)~789~012}
@@ -118,77 +118,75 @@
 %\begin{CJK*}{UTF8}{gbsn}                     % para redactar el CV en chino usando CJK
 \maketitle
 
-\section{\translate{Personal information}{Información Personal}} 
+\section{\ml{Personal information}{Información Personal}} 
 
 \cvitem
-    {\translate{First Name}{Nombre}}
+    {\ml{First Name}{Nombre}}
     {José Ramón}
 
 \cvitem
-    {\translate{Last Name}{Apellidos}}
+    {\ml{Last Name}{Apellidos}}
     {Cano Yribarren}
 
 \cvitem
-    {\translate{Gender}{Sexo}}
-    {\translate{Male}{Varón}}
+    {\ml{Gender}{Sexo}}
+    {\ml{Male}{Varón}}
 
 \cvitem
-    {\translate{Nationality}{Nacionalidad}}
-    {\translate{Spanish}{Española}}
+    {\ml{Nationality}{Nacionalidad}}
+    {\ml{Spanish}{Española}}
 
 \cvitem
-    {\translate{Marital status}{Estado civil}}
-    {\translate{Single}{Soltero}}
+    {\ml{Marital status}{Estado civil}}
+    {\ml{Single}{Soltero}}
 
 \cvitem
-    {\translate{Age}{Edad}}
+    {\ml{Age}{Edad}}
     {29}
 
 \cvitem
-    {\translate{Email}{Correo electrónico}}
+    {\ml{Email}{Correo electrónico}}
     {joserc87@gmail.com}
 
 %---------------------------------------------------------------------
 
-\section{\translate{Languages}{Idiomas}}
+\section{\ml{Languages}{Idiomas}}
 
 \cvitemwithcomment
-    {\translate{Spanish}{Español}}
-    {\translate{Native}{Nativo}}
+    {\ml{Spanish}{Español}}
+    {\ml{Native}{Nativo}}
     {}
 
 \cvitemwithcomment
-    {\translate{English}{Inglés}}
-    {\translate{Fluent}{Fluido}}
-    {\translate{Work abroad for more than 4 years, speaking English in a daily
+    {\ml{English}{Inglés}}
+    {\ml{Fluent}{Fluido}}
+    {\ml{Work abroad for more than 4 years, speaking English in a daily
     basis.}{Trabajo en el extranjero durante más de 4 años, hablando inglés a
     diario.}}
 
 \cvitemwithcomment
-    {\translate{Dutch}{Neerlandés}}
-    {\translate{Basic}{Inicial}}
+    {\ml{Dutch}{Neerlandés}}
+    {\ml{Basic}{Inicial}}
     {}
 
 %---------------------------------------------------------------------
 
-\section{\translate{Experience}{Experiencia}}
+\section{\ml{Experience}{Experiencia}}
 
-\translate
-    {\cventry
-        {2012--Present}{Lead software engineer at R\&D}{The Consultancy Firm}{The Netherlands}{}{}}
-    {\cventry
-        {2012--Presente}{Ingeniero software, desarrollador principal en I+D}{The Consultancy Firm}{Países Bajos}{}{}}
+\ml
+    {\cventry{2012--Present}{Lead software engineer at R\&D}{The Consultancy Firm}{The Netherlands}{}{}}
+    {\cventry{2012--Presente}{Ingeniero software, desarrollador principal en I+D}{The Consultancy Firm}{Países Bajos}{}{}}
 
-\translate
+\ml
     {\cventry{2010--2011}{Internship at Virtual Reality Lab}{University of Granada}{Spain}{}{}}
     {\cventry{2010--2011}{Beca en Laboratorio de Realidad Virtual}{Universidad de Granada}{España}{}{}}
 
 %---------------------------------------------------------------------
 
-\section{\translate{Education}{Educación}}
+\section{\ml{Education}{Educación}}
 
 %\cventry{year}{Degree}{Institution}{City}{\textit{Grade}}{Description}
-\translate
+\ml
 {\cventry{2005--2011}{Engineering in software and computer science}{University of Granada}{Spain}{}{
     \begin{itemize}
         \item Specialization in software engineering, AI and graphics.
@@ -208,15 +206,15 @@
     \end{itemize}
 }} % Spanish
 
-\translate
+\ml
     {\cventry{2003--2005}{Science high school diploma}{Instituto Padre Manjón}{Granada}{Spain}{}}
     {\cventry{2003--2005}{Bachiller científico}{Instituto Padre Manjón}{Granada}{España}{}}
 
 %---------------------------------------------------------------------
 
-\section{\translate{Knowledge}{Conocimientos}}
+\section{\ml{Knowledge}{Conocimientos}}
 
-\cvitem{}{\translate
+\cvitem{}{\ml
     % EN
     {My main areas of knowledge are the following (items are listed in
     descending order of experience):}
@@ -225,15 +223,15 @@
     decreciente de experiencia:}}
 
 \cvcomputer
-    {\translate{Programming Languages}{Lenguajes de programación}}
+    {\ml{Programming Languages}{Lenguajes de programación}}
         {C/C++, Java, C\#, Python, Objetive-C, Asm, PHP, JS, Ruby, Haskell.}
-    {\translate{Technologies}{Tecnologías}}
+    {\ml{Technologies}{Tecnologías}}
         {XML (DOM, SAX, XPath, Serialization/Marshalling), WebServices
         (SOAP/REST), LDAP.}
 
 \cvcomputer
     {Web Frameworks}
-        {Ext.Net, MEAN stack, socket.io. \translate{Others}{Otros}: Laravel,
+        {Ext.Net, MEAN stack, socket.io. \ml{Others}{Otros}: Laravel,
         Django, Ruby on Rails}
 	{GUIs}
         {Swing, Cocoa Touch, Qt, SDL.}
@@ -241,14 +239,16 @@
 %--
 
 \cvcomputer
-    {\translate{Software Design}{Diseño de Software}}
-        {\translate
+    {\ml{Software Design}{Diseño de Software}}
+        {\ml
+            % EN
             {UML, Object Orientation, MVC, SOLID principles Design Patterns,
             TDD/BDD, data structures and algorithms, CVS (git/svn).}
+            % ES
             {UML, Orientación a Objetos, MVC, SOLID principles Patrones de
             Diseño, TDD/BDD, estructuras de datos y algoritmos, CVS (git/svn).}
         }
-    {\translate{Testing Libraries}{Bibliotecas de unit testing}}
+    {\ml{Testing Libraries}{Bibliotecas de unit testing}}
         {Xunit, JUnit, Mocha, etc}
 
 
@@ -256,10 +256,12 @@
 
 \cvcomputer
     {OS}
-        {\translate
+        {\ml
+            % EN
             {Advanced use of GNU/Linux, *nix CLI (e.g. Mac OS X) and kernel
             compiation. Windows at user level and basics of Windows Sever and
             DOS scripting.}
+            % ES
             {Uso avanzado de GNU/Linux, *nix CLI (e.g. Mac OS X) y compilación
             del núcleo. Windows a nivel usuario y conocimientos básicos de
             Windows Server (IIS, etc) y scripting.}
@@ -269,17 +271,17 @@
 
 %--
 
-\section{\translate{Others}{Otros}}
+\section{\ml{Others}{Otros}}
 
 %--
 
 \cvcomputer
-    {\translate
+    {\ml
     % EN
     {Background in Artificial Intelligence and Soft Computing}
     % ES
     {Nociones de Inteligencia Artificial y Soft Computing}}
-        {\translate
+        {\ml
         % EN
         {Bio-inspired and evolutionary algorithms, Artificial Neural Networks
         (Matlab), Computer Vision (OpenCV), Pattern Recognition, System
@@ -288,12 +290,12 @@
         {Algoritmos bio-inspirados y evolutivos, Red Neuronales Artificiales
         (Matlab), Visión por Ordenador (OpenCV), Reconocimiento de Patrones,
         Simulación de Sistemas.}}
-    {\translate
+    {\ml
     % EN
     {Background in Parallel Programming}
     % ES
     {Nociones de Paralelismo}}
-        {\translate
+        {\ml
         % EN
         {MPI, OpenMP, OpenCL, Threads.}
         % ES
@@ -302,8 +304,8 @@
 %--
 
 \cvcomputer
-    {\translate{Electronics}{Electrónica}}
-        {\translate
+    {\ml{Electronics}{Electrónica}}
+        {\ml
         % EN
         {Basic knowledge in electronics. Pic/AVR microcontrolers programming,
         just as a hobby. PLCs programming.}
@@ -311,8 +313,8 @@
         {Conocimientos básicos de electrónica. Programacion de
         microcontroladores Pic/AVR/Arduino, solo como hobby. Programación de
         PLCs.}}
-    {\translate{Computer Graphics}{Gráficos por ordenador}}
-        {\translate
+    {\ml{Computer Graphics}{Gráficos por ordenador}}
+        {\ml
         % EN
         {OpenGL (VBO, DL, FBO, GLSL), raytracing, volumetric-raycasting.}
         % ES
@@ -321,18 +323,18 @@
 %--
 
 \cvcomputer
-    {\translate{Favorite IDEs}{IDEs favoritos}}
+    {\ml{Favorite IDEs}{IDEs favoritos}}
         {Vim + Tmux!, VisualStudio, IntelliJ IDEA, Eclipse, Netbeans,
         QtCreator}
-    {\translate{Other Software}{Otro Software}}
+    {\ml{Other Software}{Otro Software}}
         {Emacs, Git, SVN?, Makefile, PlantUML, Doxygen, GNU-plot}
 
 \cvcomputer
-    {\translate{Office Suite}{Ofimática}}
-        {\LaTeX, Sphynx, Markdown, \translate{and when needed}{y si es
+    {\ml{Office Suite}{Ofimática}}
+        {\LaTeX, Sphynx, Markdown, \ml{and when needed}{y si es
         necesario} OpenOffice/Microsoft Office.}
-    {\translate{Other Skills}{Otras Habilidades}}
-        {\translate
+    {\ml{Other Skills}{Otras Habilidades}}
+        {\ml
         % EN
         {Problem Solving. Mathematical/Algorithmic and Abstract thinking. Good
         communication skills and team work. Ease of learning \& curiosity.
@@ -344,163 +346,169 @@
 
 %-------------------------------------------------------------------------------
 
-\en{\section{Projects @ The Consultancy Firm}}
-\es{\section{Projectos @ The Consultancy Firm}}
+\section{\ml{Projects @ The Consultancy Firm}{Projectos @ The Consultancy Firm}}
 
 %--
 
-\en{\cvitem{The Document Wizard}{
-    Main project. A web application written in C\# (backend) using ASP.Net,
+\cvitem{The Document Wizard}
+    {\ml
+    % EN
+    {Main project. A web application written in C\# (backend) using ASP.Net,
     Ext.Net (frontend), MicroSoft SQL Server (persistance), ActiveDirectory
     (authentication), WCF (web services), etc. This application connects to
     \textit{OpenText}'s \textit{Stream Server} via it's SOAP API to generate
-    documents based on answers to questions pre-programmed by the user.
-}}
-\es{\cvitem{The Document Wizard}{
-    Proyecto principal. Una aplicación web escrita en C\# (backend) y usando
+    documents based on answers to questions pre-programmed by the user.}
+    % ES
+    {Proyecto principal. Una aplicación web escrita en C\# (backend) y usando
     ASP.Net, Ext.Net (frontend), MicroSoft SQL Server (persistencia),
     ActiveDirectory (autenticación), WCF (web services), etc. Esta aplicación
     se conecta con el producto de \textit{OpenText}, \textit{Stream Server} via
     su servicio SOAP para generar documentos PDF basados en respuestas a
-    preguntas pre-programadas por el usuario.
-}}
+    preguntas pre-programadas por el usuario.}
+}
 
 %--
 
-\en{\cvitem{DocWiz}{
-    An iOS app written in Objective-C that works as an online or offline client
-    for The Document Wizard.
-}}
-\es{\cvitem{DocWiz}{
-    Una app para iOS escrita en Objective-C que hace las veces de cliente
-    (online o offline) para \textit{The Document Wizard}.
-}}
+\cvitem{DocWiz}
+    {\ml
+    % EN
+    {An iOS app written in Objective-C that works as an online or offline client
+    for The Document Wizard.}
+    % ES
+    {Una app para iOS escrita en Objective-C que hace las veces de cliente
+    (online o offline) para \textit{The Document Wizard}.}
+}
 
 %--
 
-\en{\cvitem{Augmented Documents}{
-    An augmented reality app for iOS using OpenGL, and MetaIO SDK. (proof of concept)
-}}
-\es{\cvitem{Augmented Documents}{
-    Una app de realidad aumentada para iOS usando OpenGL y el SDK de MetaIO. (proof of concept)
-}}
+\cvitem{Augmented Documents}
+    {\ml
+    % EN
+    {An augmented reality app for iOS using OpenGL, and MetaIO SDK. (proof of concept)}
+    % ES
+    {Una app de realidad aumentada para iOS usando OpenGL y el SDK de MetaIO. (proof of concept)}
+}
 
 %--
 
-\en{\cvitem{The Apprentice}{
-    An intuitive WYSIWYG editor written in Java, with Swing for the GUI, to
+\cvitem{The Apprentice}
+    {\ml
+    % EN
+    {An intuitive WYSIWYG editor written in Java, with Swing for the GUI, to
     generate "Question" configurations for The Document Wizard.  Those
-    configurations are marshalled to a file or directly uploaded with SOAP.
-}}
-\es{\cvitem{The Apprentice}{
-    Editor WYSIWYG escrito en Java and Swing para generar archivos de
+    configurations are marshalled to a file or directly uploaded with SOAP.}
+    % ES
+    {Editor WYSIWYG escrito en Java and Swing para generar archivos de
     configuracion de "Preguntas" para \textit{The Document Wizard}. Esta
     configuración es serializada (marshalled) en XML y enviada a través de
-    SOAP.
-}}
+    SOAP.}
+}
 
 %--
 
-\en{\cvitem{Sandd Connector}{
-    A \textit{StreamServe} connector written in Java to sort the letters in the
+\cvitem{Sandd Connector}
+    {\ml
+    % EN
+    {A \textit{StreamServe} connector written in Java to sort the letters in the
     printing queue of a printshop based on a network file with the physical
     addresses in the Netherlands and according to a sorting and classification
     algorithm, so that the letters are produced in which Sandd would deliver
-    them, minimizing the costs of posting.
-}}
-\es{\cvitem{Sandd Connector}{
-    Un conector para \textit{StreamServe} escrito en Java para ordenación de
+    them, minimizing the costs of posting.}
+    % ES
+    {Un conector para \textit{StreamServe} escrito en Java para ordenación de
     cartas de una cola de impresión de una imprenta, en base a una red con
     todas las direcciones de los países bajos y de acuerdo con unos algorimos y
     estandares de clasificación, de forma que la correspondencia es generada en
     el orden en la que el sistema de correos holandés (Sandd) las envía,
-    minimizando los costes.
-}}
+    minimizando los costes.}
+}
 
 %--
 
-\en{\cvitem{PDF connector}{
-    A \textit{StreamServe connector} written in Java and using the PDFBox library to fix
-    `faulty' PDF output that \textit{StreamServe} generates.
-}}
-\es{\cvitem{PDF connector}{
-    Conector para \textit{StreamServe} escrito en Java y usando la biblioteca
-    PDFBox para solucionar `problemas' en los archivos PDF generatods por este.
-}}
+\cvitem{PDF connector}
+    {\ml
+    % EN
+    {A \textit{StreamServe connector} written in Java and using the PDFBox
+    library to fix `faulty' PDF output that \textit{StreamServe} generates.}
+    % ES
+    {Conector para \textit{StreamServe} escrito en Java y usando la biblioteca
+    PDFBox para solucionar `problemas' en los archivos PDF generatods por
+    este.}
+}
 
 %--
 
-\en{\cvitem{PS connector}{
-    A \textit{StreamServe connector} written in Java that parses
-    \textit{PostScript} output to fix problems in its fonts.
-}}
-\es{\cvitem{PS connector}{
-    Conector para \textit{StreamServe} escrito en Java que analiza archivos
+\cvitem{PS connector}
+    {\ml
+    % EN
+    {A \textit{StreamServe connector} written in Java that parses
+    \textit{PostScript} output to fix problems in its fonts.}
+    % ES
+    {Conector para \textit{StreamServe} escrito en Java que analiza archivos
     \textit{PostScript} y soluciona ciertos `problemas' relacionados con fuents
-    de texto.
-}}
-
-%--
-
-\cvitem{ASure}{
-    \translate{
-        A notification connector in Java for error reporting to a MicroSoft SQL
-        Server database using JDBC.
-    }{
-        Conector Java para generar informes de error y rastreo en una base de
-        datos Microsoft SQL Server.
-    }
+    de texto.}
 }
 
 %--
 
-\cvitem{SocioPath}{
-    \translate{
-        A reactive web application written in \textit{NodeJS} using the
-        \textit{MEAN} stack (\textit{MongoDB, ExpressJS, Angular 1, Socket.io,
-        etc}) to integrate multiple social network communication channels (Facebook
-        messenger, WhatsApp, Telegram and more) for customer service. It also acts
-        as a messenger bot.
-    }{
-        Aplicación web escrita en \textit{NodeJS} usando \textit{MEAN stack}
-        (\textit{MongoDB, ExpressJS, Angular 1, Socket.io, etc}) que integra
-        canales de comunicación de multiples redes sociales (Facebook messenger,
-        WhatsApp, Telegram y más) para facilitar el servicio al cliente). También
-        actua como un text-bot para messenger.
-    }
+\cvitem{ASure}
+    {\ml
+    % EN
+    {A notification connector in Java for error reporting to a MicroSoft SQL
+    Server database using JDBC.}
+    % ES
+    {Conector Java para generar informes de error y rastreo en una base de
+    datos Microsoft SQL Server.}
 }
 
 %--
 
-\translate{
-    \section{Areas of interest}
-
-    \cvlistdoubleitem{PC software development}{Back end software development}
-    \cvlistdoubleitem{Mobile devices programming}{Graphics programming}
-    \cvlistdoubleitem{Open Source}{Automation}
-    \cvlistdoubleitem{Intelligent systems and robotics}{Embedded systems programming}
-}{
-    \section{Areas de interés}
-
-    \cvlistdoubleitem{Desarrollo de software para PC}{Web backend/fullstack}
-    \cvlistdoubleitem{Programación de dispositivos móbiles}{Programación de gráficos}
-    \cvlistdoubleitem{Software libre}{Automatización}
-    \cvlistdoubleitem{Sistemas Inteligente}{Programación de sistemas empotrados}
+\cvitem{SocioPath}
+    {\ml
+    % EN
+    {A reactive web application written in \textit{NodeJS} using the
+    \textit{MEAN} stack (\textit{MongoDB, ExpressJS, Angular 1, Socket.io,
+    etc}) to integrate multiple social network communication channels (Facebook
+    messenger, WhatsApp, Telegram and more) for customer service. It also acts
+    as a messenger bot.}
+    % ES
+    {Aplicación web escrita en \textit{NodeJS} usando \textit{MEAN stack}
+    (\textit{MongoDB, ExpressJS, Angular 1, Socket.io, etc}) que integra
+    canales de comunicación de multiples redes sociales (Facebook messenger,
+    WhatsApp, Telegram y más) para facilitar el servicio al cliente). También
+    actua como un text-bot para messenger.}
 }
 
 %--
 
-\translate{
-    \section{Other interests}
-    \cvlistdoubleitem{Music}{Aeronautics}
-    \cvlistdoubleitem{Electronics}{Puzzles/challenges}
-    %\cvlistdoubleitem{Sports(tennis, basketball)}{Pinballs}
-}{
-    \section{Otros intereses y aficiones}
-    \cvlistdoubleitem{Musica}{Aeronautica}
-    \cvlistdoubleitem{Electrónica}{Puzzles y juegos de lógica}
-    %\cvlistdoubleitem{Sports(tennis, basketball)}{Pinballs}
-}
+\section{\ml{Areas of interest}{Areas de interés}}
+
+\cvlistdoubleitem
+    {\ml{PC software development}          {Desarrollo de software para PC}}
+    {\ml{Back end software development}    {Web backend/fullstack}}
+\cvlistdoubleitem
+    {\ml{Mobile devices programming}       {Programación de dispositivos móbiles}}
+    {\ml{Graphics programming}             {Programación de gráficos}}
+\cvlistdoubleitem
+    {\ml{Open Source}                      {Software libre}}
+    {\ml{Automation}                       {Automatización}}
+\cvlistdoubleitem
+    {\ml{Intelligent systems and robotics} {Sistemas Inteligente}}
+    {\ml{Embedded systems programming}     {Programación de sistemas empotrados}}
+
+%--
+
+\section{\ml{Other interests}{Otros intereses y aficiones}}
+
+\cvlistdoubleitem
+    {\ml{Music}                      {Musica}}
+    {\ml{Aeronautics}                {Aeronautica}}
+\cvlistdoubleitem
+    {\ml{Electronics}                {Electrónica}}
+    {\ml{Puzzles/challenges}         {Puzzles y juegos de lógica}}
+%\cvlistdoubleitem
+%   {\ml{Sports(tennis, basketball)} {Sports(tennis, basketball)}}
+%   {\ml{Pinballs}                   {Pinballs}}
 
 \renewcommand{\listitemsymbol}{-~}            % To change the simbol for lists
 
