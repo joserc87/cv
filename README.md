@@ -6,6 +6,10 @@ This project is not meant to be helpful to anybody, and it has been uploaded to
 this repository just as a backup. That being said, if you find it to be useful,
 feel free to use it as a template to write your own CV.
 
+# Preview:
+
+![CV](bin/JoseRamonCanoCV-en.png?raw=true "Main page of my CV")
+
 # Explanation:
 
 This CV uses the moderncv LaTeX package. Also, it uses the *ifthen* package to
